@@ -1,0 +1,33 @@
+# App environment — install in .venv-app
+# Covers: dbt, FastAPI, CrewAI, Streamlit, Redis
+# SQLAlchemy >= 2.0 (compatible with all packages here)
+
+# dbt
+dbt-core==1.8.4
+dbt-duckdb==1.8.1
+duckdb==1.0.0
+
+# API layer
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+slowapi==0.1.9
+redis==5.0.6
+hiredis==2.3.2
+
+# Agents — pinned to compatible langchain range
+crewai==0.51.0
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-anthropic==0.1.23
+
+# Dashboard
+streamlit==1.36.0
+plotly==5.22.0
+pandas==2.2.2
+
+# Utilities
+python-dotenv==1.0.1
+httpx==0.27.0
+pydantic==2.8.2
+pydantic-settings==2.3.4
+loguru==0.7.2

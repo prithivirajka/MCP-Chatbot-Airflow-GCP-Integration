@@ -1,0 +1,8 @@
+agent_data_platform:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH', '../data/duckdb/platform.duckdb') }}"
+      schema: main
+      threads: 4

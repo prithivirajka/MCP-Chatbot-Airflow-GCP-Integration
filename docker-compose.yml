@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: adp-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: adp-api
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DUCKDB_PATH=/app/data/duckdb/platform.duckdb
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: adp-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - DUCKDB_PATH=/app/data/duckdb/platform.duckdb
+      - API_BASE_URL=http://api:8000
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  redis_data:

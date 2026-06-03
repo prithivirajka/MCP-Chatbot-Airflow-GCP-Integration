@@ -1,0 +1,14 @@
+.venv/
+.venv-app/
+.venv-airflow/
+.git/
+__pycache__/
+*.pyc
+.pytest_cache/
+airflow_home/
+dbt_project/target/
+dbt_project/dbt_packages/
+agents/last_report.md
+*.egg-info/
+logs/
+.env

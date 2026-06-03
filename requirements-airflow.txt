@@ -1,0 +1,7 @@
+# Airflow environment — install in .venv-airflow
+# SQLAlchemy < 2.0 constraint from Airflow 2.9.3
+apache-airflow==2.9.3
+duckdb==1.0.0
+python-dotenv==1.0.1
+loguru==0.7.2
+httpx==0.27.0

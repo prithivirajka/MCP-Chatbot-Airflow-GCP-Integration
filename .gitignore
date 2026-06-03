@@ -1,0 +1,16 @@
+.env
+data/duckdb/
+data/raw/
+__pycache__/
+*.pyc
+.pytest_cache/
+airflow_home/
+dbt_project/target/
+dbt_project/dbt_packages/
+agents/last_report.md
+*.egg-info/
+.venv/
+.venv-app/
+.venv-airflow/
+venv/
+logs/

@@ -1,0 +1,8 @@
+# DO NOT pip install this file directly.
+# Airflow and the app stack have conflicting SQLAlchemy requirements.
+# Use the two separate files:
+#
+#   pip install -r requirements-airflow.txt   (in .venv-airflow)
+#   pip install -r requirements-app.txt       (in .venv-app)
+#
+# See README for full setup instructions.
